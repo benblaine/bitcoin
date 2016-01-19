@@ -1,28 +1,16 @@
-##COINBASE PRICE##
-
 require "net/https"
 require "open-uri"
 require "uri"
 require 'json'
 
-#uri = URI.parse("https://api.exchange.coinbase.com/products/BTC-USD/ticker")
-#http = Net::HTTP.new(uri.host, uri.port)
-#http.use_ssl = true
-#http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-#request = Net::HTTP::Get.new(uri.request_uri)
-
-#response = http.request(request)
+##COINBASE PRICE##
 
 coinbaseLatestPriceUSD = JSON.parse(URI.parse("https://api.exchange.coinbase.com/products/BTC-USD/ticker").read)['price'].to_f
 
-#ticker_hash = JSON.parse(response.body)
-
-#coinbaseLatestPriceUSD = ticker_hash['price'].to_f
-
 
 open('coinbasePrice.csv', 'a') { |f|
-  f.puts "#{Time.now}, #{coinbaseLatestPriceUSD}"
+ # f.puts "#{Time.now}, #{coinbaseLatestPriceUSD}"
+  f.puts "#{coinbaseLatestPriceUSD}"
 }
 
 ## USDZAR EXCHANGE RATE
