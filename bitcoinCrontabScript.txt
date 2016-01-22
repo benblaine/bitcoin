@@ -1,0 +1,9 @@
+# Run Dropbox every 30 minutes because it keeps stopping to work
+*/30 * * * * export LC_ALL=C; export LANGUAGE="en_US.UTF-8"; export LC_ALL="en_US.UTF-8"; ~/.dropbox-dist/dropboxd &;
+
+
+# A Ruby script that collects the last trade data from Coinbase and the latest Bids from BitX, every 10 minutes
+*/10 * * * * cd ~/Dropbox/bitcoin/; ruby getCoinbaseData.rb; ruby getBitxData.rb;
+
+# A ruby script that collects the latest exchange rate from Open Exchange, every hour
+0 * * * * cd ~/Dropbox/bitcoin/; ruby getExchangeRate.rb;
